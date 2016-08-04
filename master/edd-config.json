@@ -1,0 +1,7 @@
+{
+  "name": "Javascript",
+  "slug": "javascript",
+  "dependencies": {
+    "ralphowino/edd-base-library": "master"
+  }
+}

@@ -1,0 +1,21 @@
+descriptions : a javascript file
+
+uses: base:file
+
+type: pattern
+
+variables:
+  schema:
+    type: object
+    properties:
+      js_code:
+        type: string
+    required:
+      - js_code
+  form:
+     - "*"
+
+definitions:
+  file_name_suffix: '.js'
+  file_content: |
+      {{js_code | safe}}

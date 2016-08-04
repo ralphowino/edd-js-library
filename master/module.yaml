@@ -1,0 +1,41 @@
+descriptions : a es6 module
+
+uses: javascript:file
+
+type: pattern
+
+variables:
+  schema:
+    type: object
+    properties:
+      module_name:
+        type: string
+      imports:
+        type: array
+        properties:
+          import_path:
+            type: string
+            reuired: true
+          import_name:
+            type: string
+      module_declaration:
+        type: code
+    required:
+      - module_name
+      - module_declaration
+
+  form:
+     - "*"
+
+definitions:
+  js_code: |
+    {% if imports  %}
+      {% for import in imports %}
+        import {% if import.import_name %} {{import.import_name}} from {% endif %} '{{import.import_path}}';
+      {% endfor %}
+    {% endif %}
+
+    {{module_declaration | safe}}
+
+    export default {{module_name}};
+
